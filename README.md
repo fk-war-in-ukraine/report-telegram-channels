@@ -25,5 +25,7 @@ https://t.me/warjournaltg: True
 
 ###  Как получить `api_id` и `api_hash`
 1. Залогиньтесь в https://my.telegram.org.
-2. Перейдите в `API development tools` и заполните форму.
+2. Перейдите в `API development tools` и заполните форму, как показано на экране:
+
+![Telegram form](./docs/telegram_form.png)
 3. Вы получите `api_id` и `api_hash`. В настоящий момент к одному номеру телефона может быть привязан только один `api_id`.
