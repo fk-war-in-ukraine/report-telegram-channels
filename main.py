@@ -1,6 +1,7 @@
 import io
 import os
 import random
+import re
 import sys
 import time
 from os.path import exists
@@ -62,4 +63,12 @@ if __name__ == '__main__':
                 print('{}: {} - {}'.format(dirty_channel, result, msg))
                 time.sleep(40+random.randint(1, 128))
             except Exception as e:
-                print('{}: error - {}'.format(dirty_channel, str(e)))
+                exception_msg = str(e)
+                print('{}: error - {}'.format(dirty_channel, exception_msg))
+                # A wait of 70088 seconds is required (caused by ResolveUsernameRequest)
+                res = re.search(r"wait of (\d+) seconds", exception_msg)
+                if res:
+                    delay = int(res.group(1)) + 10
+                    print('Waiting for {} seconds... Time to get a new api_id/api_hash!'.format(delay))
+                    time.sleep(delay)
+
