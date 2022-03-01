@@ -9,7 +9,8 @@ from urllib.request import urlopen
 from telethon.sync import TelegramClient
 from telethon import functions, types
 
-CHANLIST_URL = 'https://github.com/fk-war-in-ukraine/report-telegram-channels/raw/master/dirty_channels.txt'
+#CHANLIST_URL = 'https://github.com/fk-war-in-ukraine/report-telegram-channels/raw/master/dirty_channels.txt'
+CHANLIST_URL = 'https://github.com/duhast/report-telegram-channels/raw/dev/dirty_channels.txt'
 
 def print_help() -> None:
     print('Usage:')
