@@ -3,7 +3,6 @@ import os
 import random
 import sys
 import time
-import urllib
 from os.path import exists
 from urllib.request import urlopen
 from telethon.sync import TelegramClient
@@ -23,6 +22,7 @@ def get_dirty_channels() -> set:
         with open(chan_path, 'r') as fp:
             dirty_channels = fp.readlines()
     else:
+        #TODO Может качать с https://docs.google.com/spreadsheets/d/1IxbKTfFx1Wth4KtEDGDOnvOZEp3Udbr8yZKpT1uqXOc/edit#gid=0
         with urlopen(CHANLIST_URL) as remote_file:
             remote_content = remote_file.read().decode('utf-8')
         with open(chan_path, 'w') as download:
@@ -60,6 +60,6 @@ if __name__ == '__main__':
                     message=msg
                 ))
                 print('{}: {} - {}'.format(dirty_channel, result, msg))
-                time.sleep(random.randint(3, 15) / 10.0)
+                time.sleep(40+random.randint(1, 128))
             except Exception as e:
                 print('{}: error - {}'.format(dirty_channel, str(e)))
