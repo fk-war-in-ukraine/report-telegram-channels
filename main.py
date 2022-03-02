@@ -34,7 +34,7 @@ if __name__ == '__main__':
                 result = client(functions.account.ReportPeerRequest(
                     peer=client.get_entity(dirty_channel),
                     reason=types.InputReportReasonOther(),
-                    message='Разжигание войны'
+                    message='The channel undermines the integrity of the Ukrainian state. Spreading fake news, misleading people and oman. Block it ASAP'
                 ))
                 print('{}: {}'.format(dirty_channel, result))
                 time.sleep(0.3)
