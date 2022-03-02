@@ -37,6 +37,6 @@ if __name__ == '__main__':
                     message='The channel undermines the integrity of the Ukrainian state. Spreading fake news, misleading people and oman. Block it ASAP'
                 ))
                 print('{}: {}'.format(dirty_channel, result))
-                time.sleep(0.3)
+                time.sleep(0.5)
             except Exception as e:
                 print('{}: error'.format(dirty_channel))
