@@ -7,7 +7,7 @@ import time
 from os.path import exists
 from urllib.request import urlopen
 from telethon.sync import TelegramClient
-from telethon import functions, types
+from telethon import functions, types, errors
 
 #CHANLIST_URL = 'https://github.com/fk-war-in-ukraine/report-telegram-channels/raw/master/dirty_channels.txt'
 CHANLIST_URL = 'https://github.com/duhast/report-telegram-channels/raw/dev/dirty_channels.txt'
@@ -64,12 +64,9 @@ if __name__ == '__main__':
                 print('{}: {} - {}'.format(dirty_channel, result, msg))
                 time.sleep(40+random.randint(1, 128))
             except Exception as e:
-                exception_msg = str(e)
-                print('{}: error - {}'.format(dirty_channel, exception_msg))
-                # A wait of 70088 seconds is required (caused by ResolveUsernameRequest)
-                res = re.search(r"wait of (\d+) seconds", exception_msg)
-                if res:
-                    delay = int(res.group(1)) + 10
-                    print('Waiting for {} seconds... Time to get a new api_id/api_hash!'.format(delay))
-                    time.sleep(delay)
+                print('{}: error - {}'.format(dirty_channel, str(e)))
+                if isinstance(e, errors.FloodWaitError):
+					# A wait of 70088 seconds is required (caused by ResolveUsernameRequest)
+                    print('Waiting for {} seconds... Time to get a new api_id/api_hash!'.format(e.seconds))
+                    time.sleep(e.seconds + 10)
 
